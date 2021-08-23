@@ -1,0 +1,13 @@
+.nav-link{
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: .8em;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 30%;
+}

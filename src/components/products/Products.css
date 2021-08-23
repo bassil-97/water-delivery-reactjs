@@ -1,0 +1,24 @@
+.products {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 10rem 2rem;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+}
+
+.products > h1 {
+    font-weight: bold;
+    margin-bottom: 100px;
+}
+
+.products > .container {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
