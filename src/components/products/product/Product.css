@@ -3,20 +3,19 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 30px;
-    margin-bottom: 100px;
 }
 
 .product {
     position: relative;
-    width: 22rem;
+    width: 18rem;
     min-height: 18rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-direction: column;
-    margin-bottom: 30px;
-    padding: 2.5rem 1rem;
+    padding: 20px 1.5rem;
+    margin: 20px;
+    margin-bottom: 100px;
     background: rgba( 255, 255, 255, 0.05 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 1.0px );
@@ -24,14 +23,17 @@
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     transition: .5s
-  
-
 }
 
 .product:hover {
     transform: scale(1.10);
     transition-duration: .5s;
     cursor: pointer;
+}
+
+.product > p {
+    text-align: center;
+    font-size: .8em;
 }
 
 .product > h4 {

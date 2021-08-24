@@ -6,8 +6,9 @@
     padding: 10rem 2rem;
     width: 100%;
     min-height: 100vh;
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 30s ease infinite;
 }
 
 .products > h1 {
@@ -21,4 +22,20 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }

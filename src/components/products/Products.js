@@ -14,7 +14,7 @@ export default function Products() {
             <div className="container">
                 <Product 
                     src={p1}
-                    name="Product 1"
+                    name="Product 1"  
                 />
                 <Product 
                     src={p2}
@@ -37,6 +37,7 @@ export default function Products() {
                     name="Product 6"
                 />
             </div>
+            <button type="button">Make an order</button>
         </div>
     )
 }
