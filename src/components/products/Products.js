@@ -1,6 +1,7 @@
 import React from 'react';
 import './Products.css';
 
+import OrderButton from '../orderButton/OrderButton';
 import Product from './product/Product';
 import p1 from '../../assets/products/p1.png';
 import p2 from '../../assets/products/p2.png';
@@ -37,7 +38,7 @@ export default function Products() {
                     name="Product 6"
                 />
             </div>
-            <button type="button">Make an order</button>
+            <OrderButton />
         </div>
     )
 }
