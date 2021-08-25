@@ -24,18 +24,69 @@ export default function AboutUs() {
                 </p>
                 <div className="about__us__elements">
                     <div className="about__us_element">
-                    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_sj0skmmg.json"  background="transparent"  speed="1"  style={{width: "100px", height: "100px"}}  loop  autoplay></lottie-player>
-                        <h1>test</h1>
+                        <div className="about__us__icon">
+                            <lottie-player 
+                                src="https://assets9.lottiefiles.com/packages/lf20_7UVfnn.json"  
+                                background="transparent"  speed="1"  style={{width: "60px", height: "60px"}}  
+                                loop  autoplay
+                            />
+                        </div>
+                        <span>Hosha, Jordan</span>
                     </div>
                     <div className="about__us_element">
-                        <h1>test</h1>
+                        <div className="about__us__icon">
+                            <lottie-player 
+                                src="https://assets4.lottiefiles.com/packages/lf20_ebqz3ltq.json"  
+                                background="transparent"  speed="1"  style={{width: "90px", height: "90px"}}  
+                                loop  autoplay
+                            />
+                        </div>
+                        <span>bassilalqadi65@gmail.com</span>
                     </div>
                     <div className="about__us_element">
-                        <h1>test</h1>
+                        <div className="about__us__icon">
+                            <lottie-player 
+                                src="https://assets5.lottiefiles.com/private_files/lf30_GNPF2n.json"  
+                                background="transparent"  speed="1"  style={{width: "100px", height: "100px"}}  
+                                loop  autoplay
+                            />
+                        </div>
+                        <span>+962791858735</span>
+                    </div>
+                    
+                </div>
+                <div className="about__us__elements">
+                    <div className="about__us_element">
+                        <div className="about__us__icon">
+                            <lottie-player 
+                                src="https://assets9.lottiefiles.com/packages/lf20_7UVfnn.json"  
+                                background="transparent"  speed="1"  style={{width: "60px", height: "60px"}}  
+                                loop  autoplay
+                            />
+                        </div>
+                        <span>Hosha, Jordan</span>
                     </div>
                     <div className="about__us_element">
-                        <h1>test</h1>
+                        <div className="about__us__icon">
+                            <lottie-player 
+                                src="https://assets4.lottiefiles.com/packages/lf20_ebqz3ltq.json"  
+                                background="transparent"  speed="1"  style={{width: "90px", height: "90px"}}  
+                                loop  autoplay
+                            />
+                        </div>
+                        <span>bassilalqadi65@gmail.com</span>
                     </div>
+                    <div className="about__us_element">
+                        <div className="about__us__icon">
+                            <lottie-player 
+                                src="https://assets5.lottiefiles.com/private_files/lf30_GNPF2n.json"  
+                                background="transparent"  speed="1"  style={{width: "100px", height: "100px"}}  
+                                loop  autoplay
+                            />
+                        </div>
+                        <span>+962791858735</span>
+                    </div>
+                    
                 </div>
             </div>
         </div>
