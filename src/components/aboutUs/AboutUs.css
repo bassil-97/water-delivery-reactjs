@@ -1,0 +1,35 @@
+.about__us {
+    width: 100%;
+    min-height: 100vh;
+    padding: 10rem;
+}
+
+.about__us > .container >.about__us__elements {
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about__us > .container > .about__us__elements > .about__us_element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 18rem;
+    padding: 3rem;
+    margin: 15px;
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    border-radius: 10px;
+    color: white;
+}
+
+@media screen and (max-width: 992px) {
+    .about__us {
+        padding: 5rem 0px;
+    }
+}
+

@@ -4,6 +4,7 @@ import classes from './Home.module.css';
 import Navbar from '../navbar/Navbar';
 import Products from '../products/Products';
 import OrderButton from '../orderButton/OrderButton';
+import AboutUs from '../aboutUs/AboutUs';
 
 export default function Home() {
     return (
@@ -38,6 +39,7 @@ export default function Home() {
                 </div>
             </div>
             <Products />
+            <AboutUs />
         </Fragment>
         
     )
