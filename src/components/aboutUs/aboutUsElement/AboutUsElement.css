@@ -1,19 +1,4 @@
-.about__us {
-    width: 100%;
-    min-height: 100vh;
-    padding: 10rem;
-}
-
-.about__us > .container >.about__us__elements {
-    width: 100%;
-    margin-top: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
- .about__us_element {
+.about__us_element {
     position: relative;
     display: flex;
     align-items: center;
@@ -56,10 +41,3 @@
         margin-bottom: 60px;
     }
 }
-
-@media screen and (max-width: 992px) {
-    .about__us {
-        padding: 5rem 0px;
-    }
-}
-
