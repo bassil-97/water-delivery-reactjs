@@ -44,6 +44,26 @@ export default function AboutUs() {
                         content={"+962791858735"}
                     />
                 </div>
+                <div className="about__us__elements">
+                    <AboutUsElement 
+                        IconSrc={"https://assets9.lottiefiles.com/packages/lf20_6HFXXE.json"}
+                        width={"60px"}
+                        height={"60px"}
+                        content={"@bassil-97"}
+                    />
+                    <AboutUsElement 
+                        IconSrc={"https://assets5.lottiefiles.com/private_files/lf30_f5ytlpiy.json"}
+                        width={"90px"}
+                        height={"90px"}
+                        content={"bassil_qadi"}
+                    />
+                    <AboutUsElement 
+                        IconSrc={"https://assets9.lottiefiles.com/private_files/lf30_nfrwwnhp.json"}
+                        width={"100px"}
+                        height={"100px"}
+                        content={"Bassil Alqadi"}
+                    />
+                </div>
             </div>
         </div>
     )

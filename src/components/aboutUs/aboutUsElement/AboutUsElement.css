@@ -33,7 +33,8 @@
 
 .about__us_element > span {
     margin-top: 30px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 1.10em;
 }
 
 @media screen and (max-width: 1300px) {

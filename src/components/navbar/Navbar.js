@@ -18,13 +18,10 @@ export default function Navbar() {
                             <a className="nav-link" href="#">products</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">services</a>
+                            <a className="nav-link" href="#">order now</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">about</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">contact</a>
                         </li>
                     </ul>
                 </div>

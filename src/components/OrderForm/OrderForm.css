@@ -1,0 +1,16 @@
+.orderFormWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3rem;
+}
+
+.orderFormWrapper > .container > h1{
+    font-weight: 500;
+}
+
+.breadcrumb-item > a {
+    text-decoration: none;
+}
