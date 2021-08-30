@@ -1,16 +1,70 @@
 .orderFormWrapper {
     width: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
+}
+
+.orderFormWrapper .container {
     padding: 3rem;
+}
+
+.header-container {
+    width: 100%;
+    height: 35vh;
+    background: url('../../assets/full-bg.jpg') center center;
+    background-size: cover;
+}
+
+.orderFormWrapper form {
+    background-color: #FFFFFF;
+    margin-top: 30px;
+}
+
+.orderFormWrapper form input, .orderFormWrapper form  select {
+    border-radius: 16px;
+    background-color: #F4F5FC;
 }
 
 .orderFormWrapper > .container > h1{
     font-weight: 500;
 }
 
-.breadcrumb-item > a {
-    text-decoration: none;
+.form-label {
+    font-size: .9em;
+    color: #8ba7e9;
+}
+
+.invalid label {
+    color: #ca3e51
+}
+
+.invalid input {
+    border-color: #aa0b20;
+    background-color: #ffeff1;
+}
+
+.orderFormWrapper form .phone__input {
+    width: 100%;
+    border-radius: 16px;
+    background-color: #F4F5FC;   
+}
+
+.orderMessage {
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: lightgreen;
+}
+
+.loading-wrapper {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
