@@ -25,6 +25,7 @@ export default function OrderForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [products, setProducts] = useState();
     const [selectedProduct, setSelectedProduct] = useState('');
+    const [inputDisabled, setInputDisabled] = useState(true);
 
     const firstNameRef = useRef();
     const lastNameRef = useRef();
@@ -54,6 +55,9 @@ export default function OrderForm() {
         fetchProductsList();
     }, []);
 
+    const handleInputDisabled = () => {
+        setInputDisabled(!inputDisabled);
+    };
 
     const handleClose = () => {
         setOrderSent(false);
@@ -183,7 +187,7 @@ export default function OrderForm() {
                                 />
                                 {!formInputsValidity.email && <small>Please enter a valid email</small>}
                             </div>
-                            <div className="mb-3">
+                            <div className="mb-4">
                                 <label className="form-label">Phone number</label>
                                 <PhoneInput
                                     inputClass="phone__input"
@@ -208,8 +212,30 @@ export default function OrderForm() {
                                     }
                                 </select>
                             </div>
-                            <button type="button" className="btn m-2" onClick={backToHome}>back to home</button>
-                            <button type="submit" className="btn btn-primary">order now</button>
+                            <div className="mb-2">
+                                <div className="form-check form-check-inline">
+                                    <input className="form-check-input" type="radio" name="order-quantity" id="inlineCheckbox1" value="package" onChange={handleInputDisabled} />
+                                    <label className="form-label" for="inlineCheckbox1">Package (x24)</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input className="form-check-input" type="radio" name="order-quantity" id="inlineCheckbox2" value="bottelsQuantity" onChange={handleInputDisabled} />
+                                    <label className="form-label" for="inlineCheckbox2">Enter quantity</label>
+                                </div>
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="order-quantity" className="form-label">Bottles Quantity</label>
+                                <input 
+                                    type="number" 
+                                    className="form-control" 
+                                    id="order-quantity" 
+                                    aria-label="Bottles Quantity" 
+                                    disabled={inputDisabled}
+                                />
+                            </div>
+                            <div className="d-flex justify-content-end align-items-center">
+                                <button type="button" className="btn m-2" onClick={backToHome}>back to home</button>
+                                <button type="submit" className="btn btn-primary">order now</button>
+                            </div>
                             {isLoading && loader}
                             {orderSent && !isLoading && <Modal open={orderSent} handleClose={handleClose} />}
                         </form>
