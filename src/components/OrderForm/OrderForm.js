@@ -6,6 +6,7 @@ import Breadcrump from '../../UI/breadcrumb/Breadcrump';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { backToHome } from '../../helpers/helpers';
+import Modal from '../../UI/Modal/Modal';
 
 
 const isEmpty = value => value.trim() === ''; 
@@ -19,7 +20,7 @@ export default function OrderForm() {
         product: true,
     });
 
-    const [phoneNumber, setPhoneNumber] = useState('us');
+    const [phoneNumber, setPhoneNumber] = useState('+962');
     const [orderSent, setOrderSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -27,6 +28,11 @@ export default function OrderForm() {
     const lastNameRef = useRef();
     const emailRef = useRef();
     const productRef = useRef();
+
+    
+    const handleClose = () => {
+        setOrderSent(false);
+    };
 
     async function orderHandler(event) {
         event.preventDefault();
@@ -91,12 +97,6 @@ export default function OrderForm() {
     const lastNameInputClasses = `col ${formInputsValidity.lastName ? '' : 'invalid'}`;
     const emailInputClasses = `mb-4 ${formInputsValidity.email ? '' : 'invalid'}`;
     const productInputClasses = `mb-4 ${formInputsValidity.firstName ? '' : 'invalid'}`;
-
-    let orderMessage = (
-        <div className="orderMessage">
-            <p className="mb-0">Your order has been sent successfully</p>
-        </div>
-    );
 
     let loader = (
         <div className="loading-wrapper">
@@ -171,7 +171,7 @@ export default function OrderForm() {
                             <button type="button" className="btn m-2" onClick={backToHome}>back to home</button>
                             <button type="submit" className="btn btn-primary">order now</button>
                             {isLoading && loader}
-                            {orderSent && !isLoading && orderMessage}
+                            {orderSent && !isLoading && <Modal open={orderSent} handleClose={handleClose} />}
                         </form>
                     </div>
                     <div className="col-lg d-flex align-items-center justify-content-center">
