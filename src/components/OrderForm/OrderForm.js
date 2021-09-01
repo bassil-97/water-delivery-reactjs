@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './OrderForm.css';
 
 import waterDrop from '../../assets/water-drop.svg';
@@ -7,7 +7,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { backToHome } from '../../helpers/helpers';
 import Modal from '../../UI/Modal/Modal';
-
+import Banner from '../../UI/banner/Banner';
 
 const isEmpty = value => value.trim() === ''; 
 
@@ -23,13 +23,38 @@ export default function OrderForm() {
     const [phoneNumber, setPhoneNumber] = useState('+962');
     const [orderSent, setOrderSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [products, setProducts] = useState();
+    const [selectedProduct, setSelectedProduct] = useState('');
 
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
     const productRef = useRef();
 
-    
+    useEffect(() => {
+        const fetchProductsList = async () => {
+            const response = await fetch('https://water-delivery-acdc9-default-rtdb.firebaseio.com/products.json');
+            const responseData = await response.json();
+
+            const loadedProductsList = [];
+
+            for(const key in responseData) {
+                loadedProductsList.push({
+                    id: key,
+                    name: responseData[key].name,
+                    desciption: responseData[key].desciption,
+                    price: responseData[key].price,
+                    imageURL: responseData[key].imageURL
+                });
+            }
+
+            setProducts(loadedProductsList);
+        };
+        
+        fetchProductsList();
+    }, []);
+
+
     const handleClose = () => {
         setOrderSent(false);
     };
@@ -92,6 +117,14 @@ export default function OrderForm() {
         }
     }
 
+    const handleSelectedProduct = event => {
+        for(const key in products) {
+            if(event.target.value === products[key].name) {
+                setSelectedProduct(products[key].imageURL);
+            }
+        }
+    };
+
 
     const firstNameInputClasses = `col ${formInputsValidity.firstName ? '' : 'invalid'}`;
     const lastNameInputClasses = `col ${formInputsValidity.lastName ? '' : 'invalid'}`;
@@ -108,7 +141,7 @@ export default function OrderForm() {
 
     return (
         <div className="orderFormWrapper">
-            <div className="header-container" />
+            <Banner />
             <div className="container">
                 <Breadcrump path="order" />
                 <div className="row mt-4">
@@ -161,11 +194,18 @@ export default function OrderForm() {
                                 />
                             </div>
                             <div className={productInputClasses}>
-                                <select className="form-select" aria-label="Default select example" ref={productRef}>
+                                <select 
+                                    className="form-select" 
+                                    aria-label="Default select example" 
+                                    ref={productRef}
+                                    onChange={handleSelectedProduct}
+                                >
                                     <option selected>select product</option>
-                                    <option value="Product 1">Product 1</option>
-                                    <option value="Product 2">Product 2</option>
-                                    <option value="Product 3">Product 3</option>
+                                    {
+                                        products && products.map((product) => (
+                                            <option value={product.name}>{product.name}</option>
+                                        ))
+                                    }
                                 </select>
                             </div>
                             <button type="button" className="btn m-2" onClick={backToHome}>back to home</button>
@@ -175,7 +215,7 @@ export default function OrderForm() {
                         </form>
                     </div>
                     <div className="col-lg d-flex align-items-center justify-content-center">
-                        <img src={waterDrop} className="img-fluid" width="50%" height="50%" />
+                        <img src={selectedProduct} className="img-fluid" width="20%" height="70%" />
                     </div>
                 </div>
             </div>
