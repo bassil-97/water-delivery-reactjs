@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './OrderForm.css';
 
-import waterDrop from '../../assets/water-drop.svg';
 import Breadcrump from '../../UI/breadcrumb/Breadcrump';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -24,13 +23,15 @@ export default function OrderForm() {
     const [orderSent, setOrderSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [products, setProducts] = useState();
-    const [selectedProduct, setSelectedProduct] = useState('');
+    const [selectedProduct, setSelectedProduct] = useState('https://water-delivery.s3.amazonaws.com/products/p1.png');
     const [inputDisabled, setInputDisabled] = useState(true);
+    const [totalPrice, setTotalPrice] = useState(0.0);
 
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
     const productRef = useRef();
+    const bottelsQuantity = useRef();
 
     useEffect(() => {
         const fetchProductsList = async () => {
@@ -55,7 +56,7 @@ export default function OrderForm() {
         fetchProductsList();
     }, []);
 
-    const handleInputDisabled = () => {
+    const handleInputDisabled = (type) => {
         setInputDisabled(!inputDisabled);
     };
 
@@ -70,6 +71,7 @@ export default function OrderForm() {
         const enteredLastName = lastNameRef.current.value;
         const enteredEmail = emailRef.current.value;
         const enteredProduct = productRef.current.value;
+
 
         const enteredFirstNameIsValid = !isEmpty(enteredFirstName);
         const enteredLastNameIsValid = !isEmpty(enteredLastName);
@@ -99,8 +101,11 @@ export default function OrderForm() {
                 lastName: enteredLastName,
                 email: enteredEmail,
                 product: enteredProduct,
-                phoneNumber: phoneNumber
+                phoneNumber: phoneNumber,
+                quantity: inputDisabled ? "Package (24)" : bottelsQuantity.current.value
             };
+
+
     
             const response = await fetch('https://water-delivery-acdc9-default-rtdb.firebaseio.com/orders.json', {
                 method: 'POST',
@@ -125,6 +130,8 @@ export default function OrderForm() {
         for(const key in products) {
             if(event.target.value === products[key].name) {
                 setSelectedProduct(products[key].imageURL);
+                let productPrice = parseFloat(products[key].price).toFixed(2);
+                setTotalPrice(productPrice);
             }
         }
     };
@@ -177,7 +184,7 @@ export default function OrderForm() {
                                 </div>
                             </div>
                             <div className={emailInputClasses}>
-                                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                                <label htmlFor="exampleInputEmail1" className="form-label">Email Address</label>
                                 <input 
                                     type="email" 
                                     className="form-control" 
@@ -188,7 +195,7 @@ export default function OrderForm() {
                                 {!formInputsValidity.email && <small>Please enter a valid email</small>}
                             </div>
                             <div className="mb-4">
-                                <label className="form-label">Phone number</label>
+                                <label className="form-label">Phone Number</label>
                                 <PhoneInput
                                     inputClass="phone__input"
                                     country={'jo'}
@@ -214,11 +221,26 @@ export default function OrderForm() {
                             </div>
                             <div className="mb-2">
                                 <div className="form-check form-check-inline">
-                                    <input className="form-check-input" type="radio" name="order-quantity" id="inlineCheckbox1" value="package" onChange={handleInputDisabled} />
-                                    <label className="form-label" for="inlineCheckbox1">Package (x24)</label>
+                                    <input 
+                                        className="form-check-input" 
+                                        type="radio" 
+                                        name="order-quantity"
+                                        id="inlineCheckbox1" 
+                                        value={24}
+                                        checked={inputDisabled} 
+                                        onClick={handleInputDisabled} 
+                                    />
+                                    <label className="form-label" for="inlineCheckbox1">Package (24 x 200ml)</label>
                                 </div>
                                 <div className="form-check form-check-inline">
-                                    <input className="form-check-input" type="radio" name="order-quantity" id="inlineCheckbox2" value="bottelsQuantity" onChange={handleInputDisabled} />
+                                    <input
+                                        className="form-check-input" 
+                                        type="radio" 
+                                        name="order-quantity" 
+                                        id="inlineCheckbox2" 
+                                        value="bottelsQuantity" 
+                                        onClick={handleInputDisabled} 
+                                    />
                                     <label className="form-label" for="inlineCheckbox2">Enter quantity</label>
                                 </div>
                             </div>
@@ -229,10 +251,11 @@ export default function OrderForm() {
                                     className="form-control" 
                                     id="order-quantity" 
                                     aria-label="Bottles Quantity" 
+                                    ref={bottelsQuantity}
                                     disabled={inputDisabled}
                                 />
                             </div>
-                            <div className="d-flex justify-content-end align-items-center">
+                            <div>
                                 <button type="button" className="btn m-2" onClick={backToHome}>back to home</button>
                                 <button type="submit" className="btn btn-primary">order now</button>
                             </div>
@@ -240,8 +263,11 @@ export default function OrderForm() {
                             {orderSent && !isLoading && <Modal open={orderSent} handleClose={handleClose} />}
                         </form>
                     </div>
-                    <div className="col-lg d-flex align-items-center justify-content-center">
-                        <img src={selectedProduct} className="img-fluid" width="20%" height="70%" />
+                    <div className="col-lg d-flex align-items-center justify-content-center flex-column">
+                        <div className="product__image_wrapper">
+                            <img src={selectedProduct} className="img-fluid" />
+                        </div>
+                        <h4 className="product_price">Price: ${totalPrice}</h4>
                     </div>
                 </div>
             </div>

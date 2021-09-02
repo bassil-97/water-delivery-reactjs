@@ -62,3 +62,39 @@
     align-items: center;
     justify-content: center;
 }
+
+.product__image_wrapper {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    margin-bottom: 20px;
+    backdrop-filter: blur(3px) saturate(59%);
+    -webkit-backdrop-filter: blur(3px) saturate(59%);
+    background-color: rgba(244,245,252, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.product__image_wrapper img {
+    position: absolute;
+    width: 120px;
+    height: 300px;
+    transition: .5s;
+}
+
+.product__image_wrapper img:hover {
+    transform: rotate(15deg);
+    width: 140px;
+    height: 330px;
+    transition-duration: .5s;
+}
+
+.product_price {
+    font-size: 22px;
+    font-family: 'Roboto';
+    color: #8ba7e9;
+}
