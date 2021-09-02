@@ -13,12 +13,12 @@ export default function Home() {
                 <Navbar />
                 <div className={classes.homeIntroWrapper}>
                     <div className="row w-100">
-                        <div className="col-lg d-flex justify-content-center align-items-center flex-column text-center">
+                        <div className="col-lg d-flex justify-content-center align-items-center flex-column text-center mb-4">
                             <h1>straight from <br /> <span>nature</span></h1>
                             <p>Order your products at any time and we will deliver them directly to your home.</p>
                             <OrderButton />
                         </div>
-                        <div className="col-lg d-flex justify-content-center align-items-center">
+                        <div className="col-lg d-flex justify-content-center align-items-center mt-4">
                             <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_P5CcfI.json"  background="transparent"  speed="1"  style={{width: "300px", height: "300px"}}  autoplay></lottie-player>
                         </div>
                     </div>

@@ -120,7 +120,7 @@ export default function OrderForm() {
                 setOrderSent(true);
                 setIsLoading(false);
     
-                setPhoneNumber('');
+                setPhoneNumber('+962');
                 document.getElementById("order__form").reset();
             }
         }
@@ -157,7 +157,7 @@ export default function OrderForm() {
                 <Breadcrump path="order" />
                 <div className="row mt-4">
                     <div className="col-lg d-flex align-items-start justify-content-center flex-column">
-                        <h5 className="text-muted">Fill down your information to complete the order</h5>
+                        <h5 className="text-muted">Fill down the information to complete the order</h5>
                         <form className="w-100" id="order__form" onSubmit={orderHandler}>
                             <div className="row mb-4">
                                 <div className={firstNameInputClasses}>
@@ -211,10 +211,10 @@ export default function OrderForm() {
                                     ref={productRef}
                                     onChange={handleSelectedProduct}
                                 >
-                                    <option selected>select product</option>
+                                    <option defaultValue>select product</option>
                                     {
                                         products && products.map((product) => (
-                                            <option value={product.name}>{product.name}</option>
+                                            <option key={product.id} value={product.name}>{product.name}</option>
                                         ))
                                     }
                                 </select>
@@ -227,10 +227,10 @@ export default function OrderForm() {
                                         name="order-quantity"
                                         id="inlineCheckbox1" 
                                         value={24}
-                                        checked={inputDisabled} 
+                                        defaultChecked={inputDisabled} 
                                         onClick={handleInputDisabled} 
                                     />
-                                    <label className="form-label" for="inlineCheckbox1">Package (24 x 200ml)</label>
+                                    <label className="form-label" htmlFor="inlineCheckbox1">Package (24 x 200ml)</label>
                                 </div>
                                 <div className="form-check form-check-inline">
                                     <input
@@ -241,7 +241,7 @@ export default function OrderForm() {
                                         value="bottelsQuantity" 
                                         onClick={handleInputDisabled} 
                                     />
-                                    <label className="form-label" for="inlineCheckbox2">Enter quantity</label>
+                                    <label className="form-label" htmlFor="inlineCheckbox2">Enter quantity</label>
                                 </div>
                             </div>
                             <div className="mb-4">
@@ -265,7 +265,7 @@ export default function OrderForm() {
                     </div>
                     <div className="col-lg d-flex align-items-center justify-content-center flex-column">
                         <div className="product__image_wrapper">
-                            <img src={selectedProduct} className="img-fluid" />
+                            <img src={selectedProduct} className="img-fluid" alt="product-img" />
                         </div>
                         <h4 className="product_price">Price: ${totalPrice}</h4>
                     </div>

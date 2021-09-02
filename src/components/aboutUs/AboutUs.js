@@ -6,7 +6,7 @@ import AboutUsElement from './aboutUsElement/AboutUsElement';
 export default function AboutUs() {
     return (
         <div className="about__us">
-            <div className="container">
+            <div className="container p-4" data-aos="fade-right">
                 <h1>About Us</h1>
                 <hr className="mb-4" />
                 <p className="mb-4">

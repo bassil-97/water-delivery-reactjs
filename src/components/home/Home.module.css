@@ -71,3 +71,16 @@
     font-weight: bold;
     text-align: center;
 }
+
+@media screen and (max-width: 992px) {
+    .homeIntroWrapper {
+        width: 90%;
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .homeIntroWrapper p {
+        width: 100%;
+    }
+}

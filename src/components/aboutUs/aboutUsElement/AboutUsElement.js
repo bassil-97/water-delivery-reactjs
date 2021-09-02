@@ -3,7 +3,7 @@ import './AboutUsElement.css';
 
 export default function AboutUsElement(props) {
     return (
-        <div className="about__us_element">
+        <div className="about__us_element" data-aos="zoom-in">
             <div className="about__us__icon">
                 <lottie-player 
                     src={props.IconSrc}
